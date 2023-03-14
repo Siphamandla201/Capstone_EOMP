@@ -1,11 +1,14 @@
-const database = require("../config/index");
+const database = require("../config/config");
+const bcrypt = require("bcrypt");
 const { hash, compare, hashSync } = require("bcrypt");
 const { createToken } = require("../middleware/index");
 class Users {
   async createUser(req, res) {
     let input = req.body;
+    let data = input.Password;
 
-    input.userPass = await hash(input.userPass, 15);
+    let salt = await bcrypt.genSalt(13);
+    input.Password = await bcrypt.hash(data, salt);
 
     let User = {
       Email: input.Email,
