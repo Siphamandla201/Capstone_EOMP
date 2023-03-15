@@ -2,7 +2,9 @@
   <div class="header-body">
     <header>
       <div class="header">
-        <h2>Grey Foundation</h2>
+        <h2>
+          <router-link to="/">Grey Foundation</router-link>
+        </h2>
       </div>
       <div class="header-links">
         <router-link to="/Login"><i class="fa-solid fa-user"></i></router-link>
@@ -12,11 +14,7 @@
         <router-link to="/Cart"><i class="fa-solid fa-heart"></i></router-link>
       </div>
     </header>
-    <nav class="navbar">
-      <router-link to="/">Home</router-link>
-      <router-link to="/About">About</router-link>
-      <router-link to="/Products">Products</router-link>
-    </nav>
+    <nav class="navbar"></nav>
   </div>
 </template>
 <script>
@@ -54,6 +52,11 @@ header {
   font-size: larger;
   font-weight: 800;
   cursor: none;
+}
+
+h2 a {
+  text-decoration: none;
+  color: rgb(140, 149, 245);
 }
 
 .header-links a {

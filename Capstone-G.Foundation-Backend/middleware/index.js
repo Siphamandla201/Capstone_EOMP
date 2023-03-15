@@ -34,7 +34,7 @@ function verifyAToken(req, res, next) {
       res.status(400).json({ err: "Please register" });
     }
   } catch (e) {
-    res.status(400).json({ err: e.message });
+    res.status(400).json({ err: e.msg });
   }
 }
 
