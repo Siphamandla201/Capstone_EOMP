@@ -6,6 +6,7 @@ export default createStore({
   state: {
     users: null,
     user: null,
+    products: null,
     msg: null,
   },
   mutations: {
@@ -14,6 +15,9 @@ export default createStore({
     },
     setUser(state, values) {
       state.user = values;
+    },
+    setProducts(state, values) {
+      state.products = values;
     },
     setMessage(state, values) {
       state.msg = values;
@@ -34,7 +38,27 @@ export default createStore({
       const res = await axios.get(`${grey}users/${id}`);
       const { result, err } = await res.data;
       if (result) {
+        context.commit("setUser", result);
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
+
+    async getUsers(context) {
+      const res = await axios.get(`${grey}users`);
+      const { result, err } = await res.data;
+      if (result) {
         context.commit("setUsers", result);
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
+
+    async getProducts(context) {
+      const res = await axios.get(`${grey}products`);
+      const { result, err } = await res.data;
+      if (result) {
+        context.commit("setProducts", result);
       } else {
         context.commit("setMessage", err);
       }

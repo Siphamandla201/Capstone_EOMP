@@ -4,7 +4,8 @@
     <ul>
       <li><router-link to="/Products">Products</router-link></li>
       <li><router-link to="/">Home</router-link></li>
-      <router-link to="/About">About</router-link>
+      <li><router-link to="/About">About</router-link></li>
+      <li><router-link to="/Admin">Admin</router-link></li>
     </ul>
   </div>
   <div class="copyright">
