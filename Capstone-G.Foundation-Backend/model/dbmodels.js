@@ -31,40 +31,39 @@ class Users {
   }
 
   login(req, res) {
-    let data = req.body;
-    database.query(
-      `SELECT UsersId, name, surname, cellphone, email, password, address, gender 
-      FROM Users  
-      WHERE email = ? AND password = ? ;`,
-      [data.email, data.password],
-      async (err, result) => {
-        if (result) {
-          res.status(400).json({ err });
-        } else {
-          await compare(password, data[0].password, (cErr, Result) => {
-            const jwToken = createToken({
-              email,
-              password,
-            });
-            res.cookie("VerifiedUser", jwToken, {
-              maxAge: 3600000,
-              httpOnly: true,
-            });
-            if (Result) {
-              res.status(200).json({
-                msg: "welcome back"[data.UsersId],
-                jwToken,
-                result: data[0],
-              });
-            } else {
-              res.status(401).json({
-                err: "incorrect Password, have you signed up ? ",
-              });
-            }
+    let { email, password } = req.body;
+    let qry = `SELECT UsersId, name, surname, cellphone, email, password, address, gender 
+    FROM Users  
+    WHERE email = ? AND password = ? ;`;
+
+    database.query(qry, [email, data.password], async (err, result) => {
+      if (result) {
+        res.status(400).json({ err });
+      } else {
+        await compare(password, data[0].password, (err, Result) => {
+          if (err) throw err;
+          const jwToken = createToken({
+            email,
+            password,
           });
-        }
+          res.cookie("VerifiedUser", jwToken, {
+            maxAge: 3600000,
+            httpOnly: true,
+          });
+          if (Result) {
+            res.status(200).json({
+              msg: "welcome back"[data.UsersId],
+              jwToken,
+              result: data[0],
+            });
+          } else {
+            res.status(401).json({
+              err: "incorrect Password, have you signed up ? ",
+            });
+          }
+        });
       }
-    );
+    });
   }
 
   showUser(req, res) {
