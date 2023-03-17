@@ -36,15 +36,15 @@ class Users {
       `SELECT UsersId, Name, Surname, Cellphone, Email, Password, Address, Gender 
       FROM Users  
       WHERE Email = ? AND Password = ? ;`,
-      [data.Email, data.Password],
+      [data.email, data.password],
       async (err, result) => {
         if (result.length === 0) {
           res.status(400).json({ err });
         } else {
-          await compare(Password, data[0].Password, (cErr, Result) => {
+          await compare(password, data[0].password, (cErr, Result) => {
             const jwToken = createToken({
-              Email,
-              Password,
+              email,
+              password,
             });
             res.cookie("VerifiedUser", jwToken, {
               maxAge: 3600000,
