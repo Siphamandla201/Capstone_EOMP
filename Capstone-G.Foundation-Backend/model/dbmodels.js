@@ -35,7 +35,7 @@ class Users {
     database.query(
       `SELECT UsersId, Name, Surname, Cellphone, Email, Password, Address, Gender 
       FROM Users  
-      WHERE Email = ? AND Password = ? ;`,
+      WHERE email = ? AND password = ? ;`,
       [data.email, data.password],
       async (err, result) => {
         if (result.length === 0) {
