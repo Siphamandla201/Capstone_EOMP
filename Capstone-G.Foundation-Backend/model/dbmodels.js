@@ -33,7 +33,7 @@ class Users {
   login(req, res) {
     let data = req.body;
     database.query(
-      `SELECT UsersId, Name, Surname, Cellphone, Email, Password, Address, Gender 
+      `SELECT UsersId, name, surname, cellphone, email, password, address, gender 
       FROM Users  
       WHERE email = ? AND password = ? ;`,
       [data.email, data.password],
