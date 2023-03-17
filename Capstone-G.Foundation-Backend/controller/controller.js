@@ -16,6 +16,7 @@ router.post("/register", bodyParser.json(), (req, res) => {
 });
 
 router.post("/login", bodyParser.json(), (req, res) => {
+  // console.log("running here");
   user.login(req, res);
 });
 

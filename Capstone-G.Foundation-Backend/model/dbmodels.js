@@ -58,7 +58,7 @@ class Users {
             });
           } else {
             res.status(401).json({
-              err: "incorrect Password, have you signed up ? ",
+              err: "incorrect Password, please sign up ? ",
             });
           }
         });
