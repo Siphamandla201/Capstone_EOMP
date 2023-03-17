@@ -38,7 +38,7 @@ class Users {
       WHERE email = ? AND password = ? ;`,
       [data.email, data.password],
       async (err, result) => {
-        if (result.length === 0) {
+        if (result) {
           res.status(400).json({ err });
         } else {
           await compare(password, data[0].password, (cErr, Result) => {
