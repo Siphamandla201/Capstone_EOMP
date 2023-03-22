@@ -179,10 +179,9 @@ class Products {
 
   showProduct(req, res) {
     database.query(
-      `SELECT ProductId, ProductName, ProductImage, Price, Size, Quantity
-      FROM Products  
+      `SELECT * FROM Products  
       WHERE ProductId = ?;`,
-      [req.params.productId],
+      [req.params.ProductId],
       (err, data) => {
         if (err) {
           res.status(400).json({ err });

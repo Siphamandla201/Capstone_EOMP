@@ -45,7 +45,8 @@ router.post("/products", bodyParser.json(), (req, res) => {
   product.createProduct(req, res);
 });
 
-router.get("/product/:id", bodyParser.json(), (req, res) => {
+router.get("/products/:ProductId", (req, res) => {
+  console.log("Hi");
   product.showProduct(req, res);
 });
 
