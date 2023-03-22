@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const { errorHandling } = require("./middleware/errorHandling");
+// const { errorHandling } = require("./middleware/errorHandling");
 
 app.use(router);
 
@@ -24,4 +24,4 @@ app.listen(port, (req, res) => {
   console.log(`you are connected on port ${port}`);
 });
 
-app.use(errorHandling);
+// app.use(errorHandling);

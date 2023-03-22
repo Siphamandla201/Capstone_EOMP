@@ -5,14 +5,14 @@ const { createToken } = require("../middleware/index");
 class Users {
   async createUser(req, res) {
     let input = req.body;
-    let data = input.Password;
+    let data = input.password;
 
     let salt = await bcrypt.genSalt(13);
-    input.Password = await bcrypt.hash(data, salt);
+    password = await bcrypt.hash(data, salt);
 
     let User = {
-      Email: input.Email,
-      Password: input.Password,
+      email: input.email,
+      password: input.password,
     };
 
     database.query(`INSERT INTO Users SET ?`, [input], (err) => {
@@ -32,12 +32,10 @@ class Users {
 
   login(req, res) {
     let { email, password } = req.body;
-    let qry = `SELECT UsersId, name, surname, cellphone, email, password, address, gender 
-    FROM Users  
-    WHERE email = ? AND password = ? ;`;
-
-    database.query(qry, [email, data.password], async (err, result) => {
-      if (result) {
+    let qry = `SELECT * FROM Users  
+    WHERE email = '${email}'`;
+    database.query(qry, async (err, data) => {
+      if (err) {
         res.status(400).json({ err });
       } else {
         await compare(password, data[0].password, (err, Result) => {
@@ -93,17 +91,17 @@ class Users {
     if (data.Password !== null || data.Password !== undefined)
       data.Password = hashSync(data.Password, 15);
     database.query(
-      `Update Users SET UsersId = ?, Name = ?, Surname = ?, cellphone = ?, Email = ?, Password = ?, Address = ?, Gender = ? 
+      `Update Users SET UsersId = ?, name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ?, address = ?, gender = ? 
         WHERE UsersId = ?;`,
       [
         data.UsersId,
-        data.Name,
-        data.Surname,
+        data.name,
+        data.surname,
         data.cellphone,
-        data.Email,
-        data.Password,
-        data.Address,
-        data.Gender,
+        data.email,
+        data.password,
+        data.address,
+        data.gender,
         reqUserId,
       ],
       (err, result) => {

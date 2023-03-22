@@ -17,7 +17,6 @@ router.post("/register", bodyParser.json(), (req, res) => {
 });
 
 router.post("/login", bodyParser.json(), (req, res) => {
-  // console.log("running here");
   user.login(req, res);
 });
 
@@ -34,7 +33,7 @@ router.delete("/users/:UsersId", (req, res) => {
   user.deleteUser(req, res);
 });
 
-router.put("/users/:usersId", bodyParser.json(), (req, res) => {
+router.put("/users/:UsersId", bodyParser.json(), (req, res) => {
   user.updateUser(req, res);
 });
 
