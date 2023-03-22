@@ -8,7 +8,7 @@ const { Users, Products } = require("../model/dbmodels");
 
 const user = new Users();
 
-route.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "../view/index.html"));
 });
 
