@@ -20,7 +20,8 @@ router.post("/login", bodyParser.json(), (req, res) => {
   user.login(req, res);
 });
 
-router.get("/users/:userId", (req, res) => {
+router.get("/users/:usersId", (req, res) => {
+  console.log(req.params.usersId);
   user.showUser(req, res);
 });
 
@@ -28,11 +29,11 @@ router.get("/users", (req, res) => {
   user.showAllUsers(req, res);
 });
 
-router.delete("/users/:userId", (req, res) => {
+router.delete("/users/:UsersId", (req, res) => {
   user.deleteUser(req, res);
 });
 
-router.put("/users/:userId", bodyParser.json(), (req, res) => {
+router.put("/users/:usersId", bodyParser.json(), (req, res) => {
   user.updateUser(req, res);
 });
 
@@ -44,7 +45,7 @@ router.post("/products", bodyParser.json(), (req, res) => {
   product.createProduct(req, res);
 });
 
-router.get("/products/:productId", (req, res) => {
+router.get("/product/:id", bodyParser.json(), (req, res) => {
   product.showProduct(req, res);
 });
 

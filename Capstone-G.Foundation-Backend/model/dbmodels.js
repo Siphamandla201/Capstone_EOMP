@@ -67,16 +67,14 @@ class Users {
   }
 
   showUser(req, res) {
-    let reqUsersId = req.params.UsersId;
     database.query(
-      `SELECT UsersId, Name, Surname, cellphone, Email, Password, Address, Gender 
-      FROM Users  
-      WHERE usersId = ?;`,
-      [reqUsersId],
+      `SELECT * FROM Users  
+      WHERE UsersId = ?;`,
+      [req.params.usersId],
       (err, data) => {
         if (err) {
           res.status(400).json({ err });
-        } else res.status(200).json({ UsersId: data });
+        } else res.status(200).json({ result: data });
       }
     );
   }
@@ -118,11 +116,10 @@ class Users {
   }
 
   deleteUser(req, res) {
-    let reqUserId = req.params.UsersId;
     database.query(
       `DELETE FROM Users 
       WHERE UsersId = ? ;`,
-      [reqUserId],
+      [req.params.UsersId],
       (err) => {
         if (err) throw err;
         else res.status(200).json({ msg: "Deleted successfully" });
@@ -145,17 +142,16 @@ class Products {
 
   updateProduct(req, res) {
     let reqProduct = req.params.ProductId;
-    let data = req.body;
     database.query(
       `Update Products SET ProductId = ?, ProductName = ?,ProductImage = ?, Price = ?, Size = ?, Quantity = ? 
         WHERE ProductId = ?`,
       [
-        data.ProductId,
-        data.ProductName,
-        data.ProductImage,
-        data.Price,
-        data.Size,
-        data.Quantity,
+        req.body.ProductId,
+        req.body.ProductName,
+        req.body.ProductImage,
+        req.body.Price,
+        req.body.Size,
+        req.body.Quantity,
         reqProduct,
       ],
       (err, result) => {
@@ -182,16 +178,15 @@ class Products {
   }
 
   showProduct(req, res) {
-    let reqProduct = req.params.ProductId;
     database.query(
       `SELECT ProductId, ProductName, ProductImage, Price, Size, Quantity
       FROM Products  
       WHERE ProductId = ?;`,
-      [reqProduct],
+      [req.params.productId],
       (err, data) => {
         if (err) {
           res.status(400).json({ err });
-        } else res.status(200).json({ ProductId: data });
+        } else res.status(200).json({ result: data });
       }
     );
   }
