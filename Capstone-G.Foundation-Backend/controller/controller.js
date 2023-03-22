@@ -8,9 +8,10 @@ const { Users, Products } = require("../model/dbmodels");
 
 const user = new Users();
 
-router.get("/", (req, res) => {
-  res.status(200).json({ msg: "Welcome to life choices" });
+route.get("/", (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, "../view/index.html"));
 });
+
 router.post("/register", bodyParser.json(), (req, res) => {
   user.createUser(req, res);
 });
