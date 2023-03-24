@@ -197,4 +197,60 @@ class Products {
   }
 }
 
-module.exports = { Users, Products };
+class Orders {
+  addTo(req, res) {
+    let input = req.body;
+    database.query(`INSERT INTO Orders SET ?`, [input], (err) => {
+      if (err) {
+        res.status(400).json({ err: "please login to add product" });
+      } else {
+        res.status(200).json({ msg: "Product added" });
+      }
+    });
+  }
+
+  OrdersDisplay(req, res) {
+    database.query(`SELECT * FROM Orders`, (err, data) => {
+      if (err) {
+        res.status(400).json({ err });
+      } else {
+        res.status(200).json({ result: data });
+      }
+    });
+  }
+
+  deleteOrder(req, res) {
+    let reqOrder = req.params.OrderId;
+    database.query(
+      `DELETE FROM Orders 
+      WHERE OrderId = ? ;`,
+      [reqOrder],
+      (err) => {
+        if (err) throw err;
+        else res.status(200).json({ msg: "Deleted successfully" });
+      }
+    );
+  }
+
+  updateOrder(req, res) {
+    let reqOrder = req.params.OrderId;
+    database.query(
+      `UPDATE Orders SET ? WHERE OrderId = ?`,
+      [req.body, reqOrder],
+      (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.status(200).json({ msg: "Order updated successfully", result });
+        }
+      }
+    );
+  }
+  Th
+  
+
+} 
+
+
+
+module.exports = { Users, Products, Orders };

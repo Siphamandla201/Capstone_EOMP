@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 
-const { Users, Products } = require("../model/dbmodels");
+const { Users, Products, Orders } = require("../model/dbmodels");
 
 // |||||||||||||||||||||||||||||| -USERS ROUTER- |||||||||||||||||||||||||||||||||| \\
 
@@ -54,12 +54,30 @@ router.get("/products", (req, res) => {
   product.showAllProducts(req, res);
 });
 
-router.delete("/products/:productId", (req, res) => {
+router.delete("/products/:ProductId", (req, res) => {
   product.deleteProduct(req, res);
 });
 
 router.put("/products/:productId", bodyParser.json(), (req, res) => {
   product.updateProduct(req, res);
+});
+
+const orders = new Orders();
+
+router.get("/orders", (req, res) => {
+  orders.OrdersDisplay(req, res);
+});
+
+router.post("/orders", (req, res) => {
+  orders.addTo(req, res);
+});
+
+router.delete("/orders/:OrderId", (req, res) => {
+  orders.deleteOrder(req, res);
+});
+
+router.put("/orders/:OrderId", bodyParser.json(), (req, res) => {
+  orders.updateOrder(req, res);
 });
 
 module.exports = router;
