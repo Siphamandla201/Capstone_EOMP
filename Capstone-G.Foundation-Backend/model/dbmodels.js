@@ -3,32 +3,33 @@ const bcrypt = require("bcrypt");
 const { hash, compare, hashSync } = require("bcrypt");
 const { createToken } = require("../middleware/index");
 class Users {
-  async createUser(req, res) {
-    let input = req.body;
-    let data = input.password;
 
-    let salt = await bcrypt.genSalt(13);
-    password = await bcrypt.hash(data, salt);
-
-    let User = {
-      email: input.email,
-      password: input.password,
-    };
-
-    database.query(`INSERT INTO Users SET ?`, [input], (err) => {
-      if (err) {
-        res.status(400).json({ err });
-      } else {
-        const jwToken = createToken(User);
-
-        res.cookie("VerifiedUser", jwToken, {
-          maxAge: 3600000,
-          httpOnly: true,
-        });
-        res.status(200).json({ msg: "User info submitted." });
-      }
-    });
-  }
+    async createUser(req, res) {
+      let input = req.body;
+      let data = input.password;
+  
+      let salt = await bcrypt.genSalt(13);
+      let password = await bcrypt.hash(data, salt);
+  
+      let User = {
+        email: input.email,
+        password: password,
+      };
+  
+      database.query(`INSERT INTO Users SET ?`, [User], (err) => {
+        if (err) {
+          res.status(400).json({ err });
+        } else {
+          const jwToken = createToken(User);
+  
+          res.cookie("VerifiedUser", jwToken, {
+            maxAge: 3600000,
+            httpOnly: true,
+          });
+          res.status(200).json({ msg: "User info submitted." });
+        }
+      });
+    }
 
   login(req, res) {
     let { email, password } = req.body;
@@ -91,7 +92,7 @@ class Users {
     if (data.Password !== null || data.Password !== undefined)
       data.Password = hashSync(data.Password, 15);
     database.query(
-      `Update Users SET UsersId = ?, name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ?, address = ?, gender = ? 
+      `Update Users SET ?
         WHERE UsersId = ?;`,
       [
         data.UsersId,
