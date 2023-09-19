@@ -1,0 +1,106 @@
+<template>
+  <div class="products-holder">
+    <div class="Home" v-if="products">
+      <div v-for="product in products" :key="product.productId" class="products-card">
+        <div class="product-img">
+          <router-link to="/Cart">
+            <i class="fa-regular fa-heart"></i>
+          </router-link>
+          <img class="product-image" :src="product.ProductImage" alt="Product Image" />
+        </div>
+        <div class="product-info">
+          <h3>{{ product.Designer }}</h3>
+          <p>{{ product.ProductName }}</p>
+          <div class="product-price-favorite">
+            <h4>R {{ product.Price }}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- Display loading spinner when displayedProducts is empty -->
+    </div>
+    <div v-else>
+      <Spinner />
+    </div>
+  </div>
+  
+</template>
+
+<script>
+import { useStore } from "vuex";
+import { computed } from "vue";
+import Spinner from "./Spinner.vue";
+
+export default {
+  name: "FeaturedProducts",
+  components: {
+    Spinner,
+  },
+  setup() {
+    const store = useStore();
+    store.dispatch("getProducts");
+    const products = computed(() => store.state.featuredProducts);// Use an empty array as a default value if products is null or undefined
+    return {
+      products,
+    };
+  },
+};
+
+</script>
+
+<style scoped>
+.products-holder {
+    padding: 0px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: justify;
+    align-items: center;
+    width: 100%;
+}
+
+.Home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: justify;
+    align-items: center;
+    width: 100%;
+}
+
+.product-image {
+    width: 350px;
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: end;
+}
+
+a .fa-regular {
+    color: #94ACC4;
+    font-size: 25px;
+}
+
+.product-info {
+    margin-top: 5px;
+    color: #222222;
+
+}
+
+.product-info  h3 {
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.product-info  p {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0px;
+}
+
+.product-info  h4 {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 25px 0px;
+}
+
+
+</style>

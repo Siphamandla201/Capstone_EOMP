@@ -1,0 +1,82 @@
+<template>
+  <!-- <header>
+        <nav class="main-nav">
+            <div class="nav-section">
+                <div class="nav-logo">
+                    
+                </div>
+                <div class="nav-actions">
+                    <a href="#">Sign In</a>
+                    <a href="#">Favourites</a>
+                    <a href="#">Cart</a>
+                </div>
+            </div>
+            </div>
+        </nav>
+        
+    </header> -->
+  <div class="header-body">
+    <header>
+      <div class="promo"></div>
+      <div class="nav-links">
+                    <a href="#">Men</a>
+                    <a href="#">Women</a>
+                    <a href="#">Kids</a>
+                </div>
+      <div class="header">
+        <h2>
+          <router-link to="/"><img src="https://i.postimg.cc/DmkpQmGc/Black-White-Minimalist-Business-Logo.png" alt="Logo"></router-link>
+        </h2>
+      </div>
+      <div class="header-links">
+        <router-link to="/Login"><i class="fa-solid fa-user"></i></router-link>
+        <router-link to="/Cart"
+          ><i class="fa-solid fa-basket-shopping"></i
+        ></router-link>
+        <router-link to="/Cart"><i class="fa-solid fa-heart"></i></router-link>
+      </div>
+    </header>
+    <nav class="navbar">
+      <div class="nav-section">
+                <ul class="category-list">
+                    <li><a href="#">Extra 20% off</a></li>
+                    <li><a href="#">New in</a></li>
+                    <li><a href="#">Brands</a></li>
+                    <li><a href="#">Clothing</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Trainers</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Watches</a></li>
+                    <li><a href="#">Homeware</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+                <div class="searchCon" >
+                    <button id="searchBtn">
+                      <i class="fa-solid fa-search"></i>
+                    </button>
+                    <input type="text" id="search" placeholder="Search">
+                </div>
+              </div>
+    </nav>
+  </div>
+</template>
+<script>
+export default {
+  name: "NavbarComp",
+};
+</script>
+
+<style scoped>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+</style>

@@ -1,0 +1,426 @@
+<template>
+    <div class="Home">
+        <main>
+            <div class="hero-section">
+                <a href="#" class="hero-container">
+                    <div class="hero-info-women">
+                        <h2>
+                            Falling for fall: the looks to love now
+                        </h2>
+                        <h4>
+                            Fierce outerwear, unmissable tailoring and thumb-stopping prints, this is the new season according to your favorite names. Selected and narrated by our senior womenswear editor Celenie Seidel
+                        </h4>
+                        <button>
+                            <a href="#">SHOP NOW</a>
+                        </button>
+                    </div>
+                    <div class="hero-img">
+                        <img src="https://cdn-static.farfetch-contents.com/cms-ccloud/caas/v1/media/282238/data/199b1a55c0705bdfc5421f311c06b31d/1x1_messaging-side/637/2023-09-13-ww-1-webapp-fall-collections-rtw-trend-multibrand-multicategory-img.jpeg" alt="Hero">
+                    </div>
+                </a>
+            </div>
+            <div class="women-hero-section">
+                <a href="#" class="women-hero-container">
+                    <div class="women-hero-bg-2">
+                        <img src="https://cdn-static.farfetch-contents.com/cms-ccloud/caas/v1/media/283056/data/a8897e9e725546ce77a13588a8fd14ce/1x1_two-columns/637/2023-09-13-ww-web-balenciaga-page-ds-balenciaga-multicategory-hero-1-img.jpeg" alt="">
+                        <div class="hero-bg-info-2">
+                        <h4>
+                            House signatures: the watch edit
+                        </h4>
+                        <p>
+                            This way for notable details and reworked favorites
+                        </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="women-hero-container">
+                    <div class="women-hero-bg">
+                        <img src="https://c.bannerflow.net/io/api/image/optimize?u=https%3A%2F%2Fc.bannerflow.net%2Faccounts%2Ffarfetch%2F5885fca2b801c913d4b04244%2Fimages%2Fe61c58c4-a72a-43e3-aee5-5abc12eafd5d.jpg&w=660&h=768&q=85&f=webp&rt=contain" alt="">
+                        <div class="women-hero-bg-info">
+                            <h2>
+                                RALPH LAUREN COLLECTION
+                            </h2>
+                            <button>
+                                <a href="#">SHOP NOW</a>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                </div>
+            <div class="featured-section">
+                <div class="feature-header">
+                <h2>
+                    New in: handpicked daily from the world’s best brands and boutiques
+                </h2>
+                <button>
+                    <a href="#">SHOP NOW</a>
+                    </button>
+                </div>
+                <div class="featured-products">
+                <FeaturedProducts/>
+                </div>
+            </div>
+            <div class="hero-section section-3">
+                <a href="#" class="hero-container">
+                <div class="hero-img img">
+                    <img src="https://c.bannerflow.net/accounts/farfetch/5885fca2b801c913d4b04244/published/5697160/7349655/preload.jpg" alt="Hero">
+                </div>
+                </a>
+            </div>
+            <section>
+                <div class="more-info">
+                    <div class="info">
+                        <span class="material-symbols-outlined">
+                            checkroom
+                        </span>
+                        <p>
+                            How to shop
+                        </p>
+                        <p>
+                            Your guide to shopping and placing orders
+                        </p>
+                    </div>
+                    <div class="info">
+                        <span class="material-symbols-outlined">
+                            help
+                            </span>
+                        <p>
+                            How to shop
+                        </p>
+                        <p>
+                            Your guide to shopping and placing orders
+                        </p>
+                    </div>
+                    <div class="info">
+                        <span class="material-symbols-outlined">
+                            chat_bubble
+                        </span>
+                        <p>
+                            How to shop
+                        </p>
+                        <p>
+                            Your guide to shopping and placing orders
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="newsletter">
+                    <div class="call-to-action">
+                        <h3>
+                            Get 10% off your first order
+                        </h3>
+                        <p>
+                            Sign up for promotions, tailored new arrivals, stock updates and more - straight to your inbox
+                        </p>
+                    </div>
+                    <div class="newsletter-form">
+                        <p class="Get-updates-by">
+                            Get updates by
+                        </p>
+                        <div>
+                            <div class="checkbox-container">
+                                <span id="unchecked1" class="material-symbols-outlined"  >
+                                    check_box_outline_blank
+                                </span>
+                                <span id="checked1" class="material-symbols-outlined" style="display: none;">
+                                    check_box
+                                </span>
+                                <label for="email">Email</label>
+                            </div>
+                            <span class="input-container span-1">
+                                <input class="input" type="text" placeholder="You email address">
+                            </span>
+                        </div>
+                        <div>
+                            <div class="checkbox-container">
+                                <span id="unchecked2" class="material-symbols-outlined">
+                                    check_box_outline_blank
+                                </span>
+                                <span id="checked2"  class="material-symbols-outlined" style="display: none;">
+                                    check_box
+                                </span>
+                                <label for="sms">SMS</label>
+                            </div>
+                            <span class="input-container span-2">
+                                <input class="input" type="text" placeholder="You email address">
+                            </span>
+                        </div>
+                        <button>Sign up</button>
+                        <p>
+                            By signing up, you consent to receiving marketing by email and/or SMS and acknowledge you have read our <a href="#">Privacy Policy.</a> Unsubscribe anytime at the bottom of our emails or by replying STOP to any of our SMS.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</template>
+
+<script>
+  // @ is an alias to /src
+    import FeaturedProducts from "../components/FeaturedProduct.vue"
+    
+    export default {
+        name : 'WomenView',
+        components: {
+        FeaturedProducts,
+        },
+    };
+</script>
+    
+<style scoped>
+    * {
+        padding: 0%;
+        margin: 0%;
+        box-sizing: border-box;
+    }
+
+    html {
+        padding: 0;
+        margin: 0;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    button {
+        border: 1px solid #222222;
+        border-radius: 7px;
+        width: 160px;
+        height: 50px;
+        background-color: transparent;
+    }
+
+    button:hover {
+        border: 1px solid #94ACC4;
+        background-color:#94ACC4;
+    }
+
+    button a {
+        font-weight: 600;
+        color:#222222;
+        font-size: 16px;
+        text-decoration: none;
+        
+    }
+
+    .hero-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1700px;
+        gap: 100px;
+        margin-bottom: 70px;
+    }
+
+    .hero-container {
+        text-decoration: none;
+        color: #222222;
+    } 
+
+    
+    .hero-info-women {
+        display: flex;
+        flex-direction: column;
+        width: 700px;
+        /* margin-top: -150px; */
+    }
+
+    .hero-info-women h2 {
+        font-size: 65px;
+        width: 70%;
+        margin-bottom: 50px;
+        margin-left: 50px;
+    }
+
+    .hero-info-women h4 {
+        font-size: 20px;
+        width: 85%;
+        margin-bottom: 50px;
+    }
+
+    .hero-info-women button {
+        margin-left: 230px;
+    }
+
+    .hero-img {
+        width: 800px;
+        height: 750px;
+    }
+    
+    .hero-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .women-hero-section {
+        display: flex;
+        width: 1600px;
+        justify-content: space-evenly;
+        margin-bottom: 50px;
+    }
+
+    .women-hero-container {
+        text-decoration: none;
+        color: #222222;
+    }
+
+    .featured-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        width: 100%;
+    }
+
+    .feature-header {
+        display: flex;
+        gap: 630px;
+        width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .feature-header h2 {
+        font-size: 30px;
+        font-weight: 400;
+    
+    }
+
+    .featured-products {
+        width: 90%;
+        display: block;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .more-info {
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        gap: 190px;
+        width: 100%;
+        margin: 50px 0px;
+    }
+
+    .more-info .info {
+        text-align: justify;
+        border: 2px solid #222222;
+        padding: 30px 15px;
+        width: 440px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 20px;
+        color: #222222;
+    }
+
+    .info span {
+        font-size: 38px;
+        color: #222222;
+    }
+
+    .newsletter {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin-left: 93px;
+        color: #222222;
+    }
+
+    .call-to-action {
+        width: 100%;
+        text-align: justify;
+    }
+
+    .call-to-action h3 {
+        font-size: 35px;
+        font-weight: bold;
+        width: 100%;
+        margin: 10px;
+        color: #222222;
+    }
+
+    .call-to-action p {
+        color: #222222;
+        font-size: 20px;
+        font-weight: 100;
+        width: 90%;
+        margin-top: 5px;
+    }
+
+    .newsletter-form {
+        font-size: 20px;
+        font-weight: 100;
+        color: #222222;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        text-align: justify;
+        color: #222222;
+    } 
+
+    .newsletter-form .Get-updates-by {
+        font-size: 30px !important;
+        margin: 15px 0px 0px !important;
+        color: #222222;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items:center;
+    }
+
+    .checkbox-container label {
+        font-size: 16px;
+        font-weight: lighter;
+    }
+
+    .input-container {
+        display: none;
+    }
+
+    .input {
+        width: 300.4px;
+        height: 42px;
+        border-radius: 10px;
+        border: 2px solid #222222;
+        padding: 0px 0px 0px 16px;
+        background-color: white;
+        margin-top: 10px;
+        outline: none; 
+    }
+
+    .newsletter-form input::placeholder {
+        font-size: 15px;
+        color: #3f3c3c;
+        font-weight: lighter;
+    }
+
+    .newsletter-form button {
+        font-size: 16px;
+        /* background-color :  #222222; */
+        text-align: center;
+        border: 2px solid #222222;
+        border-radius: 10px;
+        height: 40px;
+        width: 100px;
+        color: #222222;
+        font-weight: 700;
+    }
+
+    .newsletter-form p {
+        font-size: 18px;
+        margin-top: 0px;
+    }
+
+    .newsletter-form p > a {
+        text-decoration: underline;
+        color: #222222;
+    }
+</style>
